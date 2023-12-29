@@ -23,7 +23,7 @@ const MarketingPage = () => {
                     No 1 Task ManageMent
                 </div>
                 <h1 className="text-3xl md:text-6xl text-center text-neutral-800 mb-6">
-                    OrganizeZen Helps team move
+                BirdBoard Helps team move
                 </h1>
                 <div className="text-3xl md:text-6xl bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white px-4 rounded-md pb-4 w-fit">
                     Work Forward
@@ -33,7 +33,7 @@ const MarketingPage = () => {
                 Collabrate manage , project and reach new productivity peaks. From high to the home office the way your team works is unique - accomplish all it all with OrganizeZen
             </div>
             <Button className="mt-6" size='lg' asChild>
-                <Link href='/signup'>Get OrganizeZen for free</Link>
+                <Link href='/signup'>Get BirdBoard for free</Link>
             </Button>
         </div>
     )

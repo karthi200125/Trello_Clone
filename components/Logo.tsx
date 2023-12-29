@@ -11,8 +11,9 @@ const Logo = () => {
     return (
         <Link href='/'>
             <div className="hover:opacity-75 transition items-center hidden md:flex">
-                <Image src='/logo.png' alt="logo" width={100} height={100} className="rounded-full"/>
-                <p className={cn("text-lg text-[rgba(253,246,194,255)] pb-1", headingFont.className)}>OrganizeZen</p>
+                <Image src='/logo.png' alt="logo" width={100} height={100} className="rounded-full" />
+                <p className={cn("text-lg pb-1 bg-gradient-to-r from-purple-800 via-pink-600 to-orange-500 to-blue-700 text-transparent bg-clip-text",
+                    headingFont.className)}>BirdBoard</p>
             </div>
         </Link>
     )
