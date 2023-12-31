@@ -1,23 +1,20 @@
-'use client'
-
+import { create } from "@/actions/CreateBoard"
+import { Button } from "@/components/ui/button"
 import { db } from "@/lib/db"
+import Board from "./Board"
+import Form from "./Form"
 
-const OragazationIdPage = () => {
-  async function create(formData: FormData) {
-    ' use server'
-    const title = formData.get('title')
-    await db.board.create({
-      data: {
-        title,
-      }
-    })
-  }
-
+const OragazationIdPage = async () => {
+  const board = await db.board.findMany()
+  
   return (
-    <div>
-      <form action={create}>
-        <input id="title" name="title" required placeholder="Enter Board Title" className="border-black border p-1" />
-      </form>
+    <div className="flex flex-col space-y-4">
+      <Form />
+      <div className="space-y-2">
+        {board.map((board) => (
+          <Board key={board.id} title={board.title} id={board.id} />
+        ))}
+      </div>
     </div>
   )
 }
