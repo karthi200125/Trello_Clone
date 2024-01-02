@@ -11,10 +11,10 @@ export const metadata: Metadata = {
     template: `%s | ${SiteConfig.name}`
   },
   description: SiteConfig.description,
-  icons:[
+  icons: [
     {
-      url:'/logo.png',
-      href:'/logo.png'
+      url: '/logo.png',
+      href: '/logo.png'
     }
   ]
 }
