@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import { db } from "@/lib/db";
 import { revalidatePath } from "next/cache";
@@ -12,13 +12,13 @@ export type State = {
     message?: string;
 };
 
-const createBoard = z.object({
+export const createBoard = z.object({
     title: z.string().min(3, {
         message: 'Minimum length of 3 letters is required',
     }),
 });
 
-export async function create(prevState: State, formData: { get: (key: string) => string }) {
+const create = async (prevState: State, formData: { get: (key: string) => string }) => {
     const validatedFields = createBoard.safeParse({
         title: formData.get('title'),
     });
@@ -49,4 +49,6 @@ export async function create(prevState: State, formData: { get: (key: string) =>
     redirect("/organization/org_2aGRXCO3ZsOOxSLhXQBW3ZB0xBo");
 
     return { message: "Board created successfully" };
-}
+};
+
+export default create; 
