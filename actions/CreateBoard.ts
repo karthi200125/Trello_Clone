@@ -1,5 +1,3 @@
-"use server";
-
 import { db } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -51,4 +49,6 @@ const create = async (prevState: State, formData: { get: (key: string) => string
     return { message: "Board created successfully" };
 };
 
-export default create; 
+export default async (prevState: State, formData: { get: (key: string) => string }) => {
+    return create(prevState, formData);
+};
