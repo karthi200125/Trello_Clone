@@ -5,21 +5,12 @@ import FromButton from "./FromButton"
 import FormInput from "./FromInput"
 import { createBoard } from "@/actions/CreateBoard"
 
-
 const Form = () => {
 
-    const { execute, fieldErrors } = useAction(createBoard, {
-        onSuccess: (data) => {
-            console.log('success' ,data)
-        },
-        onError: (error) => {
-            console.log(error)
-        }
-    })
+    const { execute, fieldErrors } = useAction(createBoard)
 
     const onSubmit = (formData: FormData) => {
         const ttile = formData.get('title') as string
-
         execute({ ttile })
     }
 

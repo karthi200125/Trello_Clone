@@ -6,13 +6,13 @@ const SettingPage = () => {
       <OrganizationProfile appearance={{
         elements: {
           rootBox: {
-            noxShadow: 'none',
-            width: '100%'
+            boxShadow: 'none',
+            width: '100%',
           },
           card: {
             border: "1px solid #e5e5e5",
             boxShadow: 'none',
-            wifth: '100%'
+            width: '100%',            
           }
         }
       }} />
