@@ -4,8 +4,7 @@ import { useParams } from "next/navigation"
 import { useEffect } from "react"
 
 const OrgControl = () => {
-    const params = useParams()
-    console.log(params, "params")
+    const params = useParams()    
     const { setActive } = useOrganizationList()
     useEffect(() => {
         if (!setActive) return;
