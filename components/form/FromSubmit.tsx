@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils";
 
 interface FormSubmitProps {
     children: React.ReactNode;
-    disabled: boolean;
-    classname: string;
+    disabled?: boolean;
+    classname?: string;
     variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "primary";
 }
 
