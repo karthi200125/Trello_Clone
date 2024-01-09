@@ -12,7 +12,7 @@ interface FormSubmitProps {
     variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "primary";
 }
 
-export const FormSubmit = ({ children, disabled, classname, variant }: FormSubmitProps) => {
+export const FormSubmit = ({ children, disabled, classname, variant="primary" }: FormSubmitProps) => {
     const { pending } = useFormStatus();
 
     return (
