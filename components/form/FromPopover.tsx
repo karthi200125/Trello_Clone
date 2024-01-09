@@ -8,6 +8,7 @@ import { FormSubmit } from "./FromSubmit";
 import { useAction } from "@/hooks/useActions";
 import { createBoard } from "@/actions/CreateBoard";
 import { toast } from "sonner";
+import { FromPicker } from "./FormPicker";
 
 interface PopoverProps {
     children: React.ReactNode;
@@ -53,6 +54,7 @@ export const FormPopover = ({ children, side = "bottom", align, sideOffset = 0 }
                 </PopoverClose>
                 <form className="space-y-4" action={onSubmit}>
                     <div className="space-y-4">
+                        <FromPicker id="image" errors={fieldErrors} />
                         <FormInput id="title" label="Board Title" type="text" errors={fieldErrors} />
                     </div>
                     <FormSubmit classname="w-full">
