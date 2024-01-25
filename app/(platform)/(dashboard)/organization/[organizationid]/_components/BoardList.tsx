@@ -1,6 +1,5 @@
 import { FormPopover } from "@/components/form/FromPopover"
 import { Hint } from "@/components/hint"
-
 import { HelpCircle, User2 } from "lucide-react"
 import { auth } from '@clerk/nextjs';
 import { redirect } from "next/navigation";
@@ -9,11 +8,9 @@ import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export const BoardList = async () => {
-
     const { orgId } = auth();
-
     if (!orgId) return redirect("/selectorg")
-
+    
     const Boards = await db.board.findMany({
         where: {
             orgId,
@@ -22,7 +19,6 @@ export const BoardList = async () => {
             createdAt: "desc"
         }
     })
-
 
     return (
         <div className="space-y-4">
@@ -60,10 +56,10 @@ BoardList.Skeleton = function SkeletonBoardList() {
             <Skeleton className="aspect-video h-full w-full p-2" />
             <Skeleton className="aspect-video h-full w-full p-2" />
             <Skeleton className="aspect-video h-full w-full p-2" />
-            <Skeleton className="aspect-video h-full w-full p-2" />            
             <Skeleton className="aspect-video h-full w-full p-2" />
             <Skeleton className="aspect-video h-full w-full p-2" />
-            <Skeleton className="aspect-video h-full w-full p-2" />            
+            <Skeleton className="aspect-video h-full w-full p-2" />
+            <Skeleton className="aspect-video h-full w-full p-2" />
         </div>
     )
 }
