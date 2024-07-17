@@ -10,6 +10,7 @@ import { CardsWithLists } from "@/types";
 
 import { useQuery } from "@tanstack/react-query";
 import Header from "./Header";
+import Description from "./Description";
 
 
 const CardModal = () => {
@@ -33,6 +34,17 @@ const CardModal = () => {
                     :
                     <Header data={cardData} />
                 }
+                <div className="grid grid-cols-1 md:grid-cols-4 md:gap-4">
+                    <div className="col-span-3">
+                        <div className="w-full space-y-6">
+                            {cardData ?
+                                <Description data={cardData} />
+                                :
+                                <Description.Skeleton />
+                            }
+                        </div>
+                    </div>
+                </div>
             </DialogContent>
         </Dialog>
     );
