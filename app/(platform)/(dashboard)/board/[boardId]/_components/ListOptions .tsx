@@ -1,5 +1,6 @@
-'use client'
+'use client';
 
+import { copyList } from '@/actions/CopyList/intex';
 import { deleteList } from '@/actions/DeleteList/intex';
 import { FormSubmit } from '@/components/form/FromSubmit';
 import { Button } from '@/components/ui/button';
@@ -18,26 +19,41 @@ interface ListOptionsProps {
 }
 
 const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
-
-    const closeRef = useRef<ElementRef<'button'>>(null)
+    const closeRef = useRef<ElementRef<'button'>>(null);
 
     const { execute: executeDelete } = useAction(deleteList, {
         onSuccess: (data) => {
-            toast.success(`List "${data?.title}" Deleted`)
-            closeRef.current?.click()
+            toast.success(`List "${data?.title}" deleted`);
+            closeRef.current?.click();
         },
         onError: (error) => {
-            toast.error(error)
+            toast.error(error);
         }
-    })
+    });
+
+    const { execute: executeCopy } = useAction(copyList, {
+        onSuccess: (data) => {
+            toast.success(`List "${data?.title}" copied`);
+            closeRef.current?.click();
+        },
+        onError: (error) => {
+            toast.error(error);
+        }
+    });
 
     const onDelete = (formData: FormData) => {
-        const id = formData.get('id') as string
-        const boardId = formData.get('boardId') as string
+        const id = formData.get('id') as string;
+        const boardId = formData.get('boardId') as string;
 
-        executeDelete({ id, boardId })
-    }
+        executeDelete({ id, boardId });
+    };
 
+    const onCopy = (formData: FormData) => {
+        const id = formData.get('id') as string;
+        const boardId = formData.get('boardId') as string;
+
+        executeCopy({ id, boardId });
+    };
 
     return (
         <Popover>
@@ -46,11 +62,7 @@ const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
                     <MoreHorizontal className='h-4 w-4' />
                 </Button>
             </PopoverTrigger>
-            <PopoverContent
-                className='px-0 pt-3 pb-3 bg-white w-[250px]'
-                side='bottom'
-                align='start'
-            >
+            <PopoverContent className='px-0 pt-3 pb-3 bg-white w-[250px]' side='bottom' align='start'>
                 <div className='text-sm font-medium text-center text-neutral-600 pb-4'>
                     List actions
                 </div>
@@ -66,34 +78,30 @@ const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
                 >
                     Add Card...
                 </Button>
-                <form
-                    action=""
-                >
+                <form action={onCopy}>
                     <input hidden name='id' value={data?.id} />
                     <input hidden name='boardId' value={data?.boardId} />
                     <FormSubmit
                         variant='ghost'
                         classname='rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm'
                     >
-                        copy list ...
+                        Copy list ...
                     </FormSubmit>
                 </form>
                 <Separator />
-                <form
-                    action={onDelete}
-                >
+                <form action={onDelete}>
                     <input hidden name='id' value={data?.id} />
                     <input hidden name='boardId' value={data?.boardId} />
                     <FormSubmit
                         variant='ghost'
                         classname='rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm'
                     >
-                        Delet this list
+                        Delete this list
                     </FormSubmit>
                 </form>
             </PopoverContent>
         </Popover>
-    )
+    );
 }
 
-export default ListOptions 
+export default ListOptions;

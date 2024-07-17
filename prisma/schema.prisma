@@ -34,7 +34,7 @@ model List {
   boardId String
   board   Board     @relation(fields: [boardId], references: [id], onDelete: Cascade)
 
-  cards   Card[]    // Define the relation to cards
+  cards   Card[]    
 
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
