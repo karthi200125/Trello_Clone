@@ -14,7 +14,7 @@ export const BoardList = async () => {
 
     if (!orgId) return redirect("/selectorg")
 
-    const Boards = await db.board.findMany({
+    const boards = await db.board.findMany({
         where: {
             orgId,
         },
@@ -23,7 +23,6 @@ export const BoardList = async () => {
         }
     })
 
-
     return (
         <div className="space-y-4">
             <div className="flex items-center font-semibold text-lg text-neutral-700">
@@ -31,7 +30,7 @@ export const BoardList = async () => {
                 Your Boards
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                {Boards.map((board) => (
+                {boards?.map((board) => (
                     <Link href={`/board/${board.id}`} key={board.id} style={{ backgroundImage: `url(${board.imageThumbUrl})` }}
                         className="group relative aspect-video bg-no-repeat bg-center bg-cover bg-sky-700 rounded-sm h-full w-full p-2 overflow-hidden">
                         <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition" />
@@ -60,10 +59,10 @@ BoardList.Skeleton = function SkeletonBoardList() {
             <Skeleton className="aspect-video h-full w-full p-2" />
             <Skeleton className="aspect-video h-full w-full p-2" />
             <Skeleton className="aspect-video h-full w-full p-2" />
-            <Skeleton className="aspect-video h-full w-full p-2" />            
             <Skeleton className="aspect-video h-full w-full p-2" />
             <Skeleton className="aspect-video h-full w-full p-2" />
-            <Skeleton className="aspect-video h-full w-full p-2" />            
+            <Skeleton className="aspect-video h-full w-full p-2" />
+            <Skeleton className="aspect-video h-full w-full p-2" />
         </div>
     )
 }

@@ -17,10 +17,10 @@ interface FormPickerProps {
 export const FormPicker = ({ id, errors }: FormPickerProps) => {
 
     const { pending } = useFormStatus();
-    const [images, setImages] = useState<Array<Record<string, any>>>([defaultImages]);
+    const [images, setImages] = useState<Array<Record<string, any>>>(defaultImages);
     const [isLoading, setIsLoading] = useState(true);
     const [selectedImageId, setSelectedImageId] = useState(null);
-
+    
     useEffect(() => {
         const fetchImages = async () => {
             try {
@@ -53,12 +53,13 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
         );
     }
 
+
     return (
         <div className="relative">
             <div className="grid grid-cols-3 gap-2 mb-2">
-                {images.map((image) => (
+                {images.map((image: any, i: any) => (
                     <div
-                        key={image.id}
+                        key={i}
                         className={cn(
                             "cursor-pointer relative aspect-video group hover:opacity-75 transition bg-muted",
                             pending && "opacity-50 hover:opacity-50 cursor-pointer"
