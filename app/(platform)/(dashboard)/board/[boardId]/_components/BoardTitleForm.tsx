@@ -4,12 +4,12 @@ import { upadteBoard } from "@/actions/UpdateBoard/intex"
 import { FormInput } from "@/components/form/formInput"
 import { Button } from "@/components/ui/button"
 import { useAction } from "@/hooks/useActions"
-import { board } from "@prisma/client"
+import { Board } from "@prisma/client"
 import { ElementRef, useRef, useState } from "react"
 import { toast } from "sonner"
 
 interface BoardTitleFormProps {
-    data: board
+    data: Board
 }
 
 const BoardTitleForm = ({ data }: BoardTitleFormProps) => {
