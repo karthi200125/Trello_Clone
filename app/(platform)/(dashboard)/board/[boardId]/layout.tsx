@@ -1,27 +1,29 @@
-// app/(platform)/(dashboard)/board/[boardId]/layout.tsx
-
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
 import { notFound, redirect } from "next/navigation";
 import { BoardNavbar } from "./_components/BoardNavbar";
 
-// Function to generate metadata
-export async function generateMetaData({ params }: { params: { boardId: string } }) {
-    const { orgId } = auth()
+// export async function generateMetaData({ params }: { params: { boardId: string } }) {
+//     const { orgId } = auth()
 
-    if (!orgId) return { title: "Board" }
+//     if (!orgId) return { title: "Board" }
 
-    const board = await db.board.findUnique({
-        where: {
-            id: params.boardId,
-            orgId
-        }
-    })
+//     const board = await db.board.findUnique({
+//         where: {
+//             id: params.boardId,
+//             orgId
+//         }
+//     })
 
-    return { title: board?.title || "Board" }
-}
+//     return { title: board?.title || "Baord" }
+
+// }
+
+
+
 
 const BoardIdLayout = async ({ children, params }: { children: React.ReactNode; params: { boardId: string } }) => {
+
     const { orgId } = auth()
     if (!orgId) return redirect('/selectorg')
 
@@ -45,4 +47,4 @@ const BoardIdLayout = async ({ children, params }: { children: React.ReactNode; 
     )
 }
 
-export default BoardIdLayout;
+export default BoardIdLayout
