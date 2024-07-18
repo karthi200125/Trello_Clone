@@ -9,9 +9,7 @@ interface ItemsProps {
 }
 
 const Activity = ({ items }: ItemsProps) => {
-
-    console.log("activities gets all", items)
-
+    
     return (
         <div className="flex items-start gap-x-3 w-full">
             <ActivityIcon className="w-5 h-5 mt-0.5 text-neutral-700" />
