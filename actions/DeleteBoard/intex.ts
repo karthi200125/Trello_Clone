@@ -9,6 +9,7 @@ import { DeleteBoard } from "./Schema";
 import { InputType, ReturnType } from "./Types";
 import { createAuditLog } from "@/lib/CreateAuditLof";
 import { ACTION, ENTITY_TYPE } from "@prisma/client";
+import { decrementAvailableCount } from "@/lib/OrgLimit";
 
 
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -28,6 +29,8 @@ const handler = async (data: InputType): Promise<ReturnType> => {
                 id, orgId
             }
         })
+
+        await decrementAvailableCount()
 
         await createAuditLog({
             entityTitle: board?.title,

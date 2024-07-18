@@ -7,6 +7,9 @@ import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
+import { getAvailableCount } from "@/lib/OrgLimit";
+import { MaxFreeBoards } from "@/constants/boards";
+import { checkSubscription } from "@/lib/subscription";
 
 export const BoardList = async () => {
 
@@ -22,6 +25,9 @@ export const BoardList = async () => {
             createdAt: "desc"
         }
     })
+
+    const availablecount = await getAvailableCount()
+    const isPro = await checkSubscription()
 
     return (
         <div className="space-y-4">
@@ -40,7 +46,7 @@ export const BoardList = async () => {
                 <FormPopover sideOffset={10} side="right">
                     <div role="button" className="aspect-video relative h-full w-full bg-muted rounded-sm flex flex-col gap-y-1 items-center justify-center hover:opacity-75 transition">
                         <p className="text-sm">Create new board</p>
-                        <span className="text-xs">5 Remainings</span>
+                        <span className="text-xs">{isPro ? "Unlimited" : `${MaxFreeBoards - availablecount} Remainings`} </span>
                         <Hint sideOffset={40} description="Free Workspace Can up to 5 boards. For unlimited boards upgrade this workspace">
                             <HelpCircle className="absolute bottom-2 right-2 h-[14px] w-[14px]" />
                         </Hint>

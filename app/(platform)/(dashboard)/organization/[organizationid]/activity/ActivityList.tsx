@@ -16,6 +16,9 @@ const ActivityList = async () => {
     const auditLogs = await db.auditLog.findMany({
         where: {
             orgId
+        },
+        orderBy: {
+            createdAt: 'desc'
         }
     })
 

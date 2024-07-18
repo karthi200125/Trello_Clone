@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { FormPicker } from "./FormPicker";
 import { ElementRef, useRef } from "react";
 import { useRouter } from "next/navigation";
+import useProModal from "@/hooks/useProModel";
 
 
 interface PopoverProps {
@@ -24,6 +25,7 @@ export const FormPopover = ({ children, side = "bottom", align, sideOffset = 0 }
 
     const closeRef = useRef<ElementRef<"button">>(null)
     const router = useRouter()
+    const proModel = useProModal()
     const { execute, fieldErrors } = useAction(createBoard, {
         onSuccess: (data) => {
             toast.success("Board Created!");
@@ -32,6 +34,7 @@ export const FormPopover = ({ children, side = "bottom", align, sideOffset = 0 }
         },
         onError: (error) => {
             toast.error(error)
+            proModel.onOpen()
         },
     })
 
