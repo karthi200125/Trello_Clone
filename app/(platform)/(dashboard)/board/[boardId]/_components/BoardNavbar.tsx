@@ -1,9 +1,9 @@
-import { board } from "@prisma/client"
+import { Board } from "@prisma/client"
 import BoardTitleForm from "./BoardTitleForm"
 import { BoardOptions } from "./BoardOptions"
 
 interface BoardNavbar {
-    data: board
+    data: Board
 }
 
 export const BoardNavbar = async ({ data }: BoardNavbar) => {
