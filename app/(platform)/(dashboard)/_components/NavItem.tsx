@@ -42,7 +42,7 @@ const NavItem = ({ isExpanded, isActive, organization, onExpand }: NavItemProps)
             label: 'Activity',
             icon: <Activity className="h-4 w-4 mr-2" />,
             href: `/organization/${organization.id}/activity`
-        },
+        },  
         {
             label: 'Settings',
             icon: <Settings className="h-4 w-4 mr-2" />,

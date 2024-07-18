@@ -1,5 +1,3 @@
-'use client'
-
 import { GenerateLogMessage } from "@/lib/GenerateLogMessage"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { format } from 'date-fns'

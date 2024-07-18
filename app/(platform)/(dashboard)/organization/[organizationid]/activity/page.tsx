@@ -1,13 +1,10 @@
-'use client'
-
 import { Separator } from "@/components/ui/separator"
 import { Info } from "../_components/Info"
 import ActivityList from "./ActivityList"
-import { Suspense } from "react"
-import { checkSubscription } from "@/lib/subscription"
 
-const ActivityPage = async () => {
-    const isPro = await checkSubscription()
+const ActivityPage = () => {
+    // const isPro = await checkSubscription()
+    const isPro = false
 
     return (
         <div className="w-full">
