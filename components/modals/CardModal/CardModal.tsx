@@ -11,6 +11,7 @@ import { CardsWithLists } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import Header from "./Header";
 import Description from "./Description";
+import Actions from "./Actions";
 
 
 const CardModal = () => {
@@ -43,6 +44,13 @@ const CardModal = () => {
                                 <Description.Skeleton />
                             }
                         </div>
+                    </div>
+                    <div>
+                        {!cardData ?
+                            <Actions.Skeleton />
+                            :
+                            <Actions data={cardData} />
+                        }
                     </div>
                 </div>
             </DialogContent>
