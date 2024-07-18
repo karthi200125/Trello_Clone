@@ -6,6 +6,8 @@ import { db } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { createSafeAction } from "@/lib/createsafeaction";
 import { CreateBoard } from "./Schema";
+import { createAuditLog } from "@/lib/CreateAuditLof";
+import { ACTION, ENTITY_TYPE } from "@prisma/client";
 
 
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -20,7 +22,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
     const [imageId, imageThumbUrl, imageFullUrl, imageLinkHTML, imageUserName] = image.split("|")
 
-    
+
 
     if (!imageId || !imageThumbUrl || !imageFullUrl || !imageUserName || !imageLinkHTML) {
         return {
@@ -42,11 +44,18 @@ const handler = async (data: InputType): Promise<ReturnType> => {
                 imageLinkHTML
             }
         })
+        await createAuditLog({
+            entityTitle: board?.id,
+            entityId: board?.id,
+            entityType: ENTITY_TYPE.BOARD,
+            action: ACTION.CREATE
+        })
     } catch (error) {
         return {
             error: "failed to create"
         }
     }
+
 
     revalidatePath(`/board/${board.id}`)
     return { data: board }

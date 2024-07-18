@@ -6,6 +6,8 @@ import { auth } from "@clerk/nextjs";
 import { revalidatePath } from "next/cache";
 import { UpadteList } from "./Schema";
 import { InputType, ReturnType } from "./Types";
+import { createAuditLog } from "@/lib/CreateAuditLof";
+import { ACTION, ENTITY_TYPE } from "@prisma/client";
 
 
 const handler = async (data: InputType): Promise<ReturnType> => {
@@ -28,6 +30,13 @@ const handler = async (data: InputType): Promise<ReturnType> => {
             }, data: {
                 title
             }
+        })
+
+        await createAuditLog({
+            entityTitle: list?.title,
+            entityId: list?.id,
+            entityType: ENTITY_TYPE.LIST,
+            action: ACTION.UPDATE
         })
     } catch (error) {
         return { error: "Failed to Upadate" }
