@@ -32,7 +32,7 @@ const ListForm = () => {
         setIsEditing(false);
     };
 
-    const { execute, fieldErrors } = useAction(createList, {
+    const { execute, fieldErrors, isLoading } = useAction(createList, {
         onSuccess: (data) => {
             toast.success(`List "${data?.title}" Created`)
             disableEditing();
@@ -83,7 +83,7 @@ const ListForm = () => {
                         name="boardId"
                     />
                     <div className="flex items-center gap-x-1">
-                        <FormSubmit>
+                        <FormSubmit disabled={isLoading}>
                             Add List
                         </FormSubmit>
                         <Button

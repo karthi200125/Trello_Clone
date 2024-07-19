@@ -23,7 +23,7 @@ const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(({ listId, isEdi
     const params = useParams();
     const formRef = useRef<ElementRef<'form'>>(null);
 
-    const { execute, fieldErrors } = useAction(createCard, {
+    const { execute, fieldErrors, isLoading } = useAction(createCard, {
         onSuccess: (data) => {
             toast.success(`${data?.title} created`);
             formRef.current?.reset();
@@ -54,7 +54,6 @@ const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(({ listId, isEdi
         const listId = formData.get('listId') as string;
         const boardId = params.boardId as string;
 
-        console.log(title, listId, boardId);
         execute({ title, listId, boardId });
     };
 
@@ -80,7 +79,7 @@ const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(({ listId, isEdi
                     value={listId}
                     readOnly
                 />
-                <FormSubmit>
+                <FormSubmit disabled={isLoading}>
                     Add card
                 </FormSubmit>
                 <Button size='sm' variant='ghost'>
