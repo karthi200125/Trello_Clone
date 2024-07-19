@@ -13,14 +13,14 @@ const Navbar = () => {
                 <div className="hidden md:flex">
                     <Logo />
                 </div>
-                <FormPopover align="start" side="bottom" sideOffset={18}>
+                {/* <FormPopover align="start" side="bottom" sideOffset={18}>
                     <Button size='sm' variant='primary' className="rounded-sm hidden md:block h-auto py-1.5 px2">Create</Button>
-                </FormPopover>
-                <FormPopover>
+                </FormPopover> */}
+                {/* <FormPopover>
                     <Button size='sm' variant='primary' className="rounded-sm block md:hidden">
                         <Plus className="h-4 w-4" />
                     </Button>
-                </FormPopover>
+                </FormPopover> */}
             </div>
             <div className="ml-auto flex items-center gap-x-2">
                 <OrganizationSwitcher hidePersonal afterCreateOrganizationUrl='/organization/:id'

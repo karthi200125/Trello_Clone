@@ -20,7 +20,7 @@ const About = () => {
 
             {/* left side */}
             <div className="w-full lg:flex-1 h-full space-y-8">
-                <div className="px-5 py-2 text-sm rounded-full bg-black text-white uppercase font-bold max-w-max">About us</div>
+                <div className="mx-auto md:mx-0 px-5 py-2 text-sm rounded-full bg-black text-white uppercase font-bold max-w-max">About us</div>
                 <h1 className="text-3xl text-center md:text-start md:text-[40px] xl:text-[60px] leading-none">
                     Solution For Efficinet Task Management
                 </h1>
@@ -33,7 +33,7 @@ const About = () => {
                 <div className="flex flex-col md:flex-row items-start gap-5">
                     <div className="flex-1 space-y-2">
                         <CalendarSearch className="h-8 w-8 text-orange-400" />
-                        <h2 className="text-xl font-bold ">
+                        <h2 className="text-xl font-bold capitalize">
                             smart sheduling
                         </h2>
                         <div className={cn("text-sm md:text-md text-neutral-400  mt-4 max-w-xs md:max-w-2xl max-auto", texFont.className)}>
@@ -42,7 +42,7 @@ const About = () => {
                     </div>
                     <div className="flex-1 space-y-2">
                         <Users className="h-8 w-8 text-orange-400" />
-                        <h2 className="text-xl font-bold ">
+                        <h2 className="text-xl font-bold capitalize">
                             smart sheduling
                         </h2>
                         <div className={cn("text-sm md:text-md text-neutral-400  mt-4 max-w-xs md:max-w-2xl max-auto", texFont.className)}>
