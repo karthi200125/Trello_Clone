@@ -1,5 +1,5 @@
 export const SiteConfig = {
-    name: "BirdBoard",
+    name: "Taskify",
     description: "Collaborate Mangae Products , and reach new productivity peaks",
 }
 

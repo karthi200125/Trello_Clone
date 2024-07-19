@@ -82,3 +82,26 @@ body,
     @apply bg-background text-foreground;
   }
 }
+
+.pro-custom-gradient {
+  background: linear-gradient(to right, #f2d963, #9d7821);
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #f2f2f2;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}

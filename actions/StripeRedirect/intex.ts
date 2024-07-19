@@ -17,7 +17,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
         return { error: "Unauthorized" };
     }
 
-    const settingURL = absoluteURl(`/organization/${orgId}`);
+    const settingURL = `${process.env.NEXT_PUBLIC_APP_URL}/organization/${orgId}`;
     let url = "";
 
     try {
@@ -59,9 +59,9 @@ const handler = async (data: InputType): Promise<ReturnType> => {
             });
             url = stripeSession.url || "";
         }
-        
+
     } catch (error) {
-        console.error("Error processing webhook:", error);        
+        console.error("Error processing webhook:", error);
         return { error: "Something went wrong" };
     }
 

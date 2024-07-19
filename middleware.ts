@@ -2,7 +2,7 @@ import { authMiddleware, redirectToSignIn } from "@clerk/nextjs";
 import { url } from "inspector";
 import { NextResponse } from "next/server";
 export default authMiddleware({
-    publicRoutes: ['/', '/api/webhooks'],
+    publicRoutes: ['/', '/api/webhook'],
     afterAuth(auth, req) {
         if (auth.userId && auth.isPublicRoute) {
             let path = '/selectorg'
